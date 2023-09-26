@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.form-box{
+    background: #81b0ee;
+    width: fit-content;
+    padding: 100px;
+    color: black;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-btn{
+    background: rgb(151, 104, 18);
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 0    ;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    
+
+}
