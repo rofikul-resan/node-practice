@@ -16,24 +16,39 @@ app.get('/', (req, res) => {
   res.send("hello server");
 });
 
-const url = 'mongodb://127.0.0.1:27017/task'; 
+const url = 'mongodb://127.0.0.1:27017/tasks'; 
 
 async function runDB() {
-  const res = await mongoose.connect(url)
+  await mongoose.connect(url)
   console.log();
   console.log("after mongoose");
 
   const todoSchema = new mongoose.Schema({
     title: String,
-    description: String,
+    details: String,
+    time: {
+      type : Date, 
+      default :Date.now
+    }
+
   });
 
   const Todo = mongoose.model('todo', todoSchema);
 
   app.get("/task", async (req, res) => {
-    const result = await Todo.find()
+    const result = await Todo.find({})
     console.log(result);
-    res.send("resan")
+    res.send(result)
+  })
+
+  app.post("/task", async (req, res) => {
+    const data = req.body
+
+    const newTodo = new Todo(data)
+    const result = await newTodo.save()
+    
+    res.send(result)
+    
   })
 }
 
